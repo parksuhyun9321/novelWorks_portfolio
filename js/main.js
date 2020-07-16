@@ -1,9 +1,9 @@
 $("#gnb .gnbList > li").on("mouseenter",function(){
     $("#header").addClass("on");
-})
+});
 $("#gnb .gnbList > li").on("mouseleave",function(){
     $("#header").removeClass("on");
-})
+});
 
 $("#gnb .gnbList > li .depth01").on("click",function(){
     if($("body").hasClass("mobile")){
@@ -32,7 +32,37 @@ $("#sitemap .btnClose").on("click",function(){
     return false;
 });
 
-// header
+// site map
+
+// #header
+
+
+let mainVisual = new Swiper("#mainVisual .mask",{
+    effect:"fade",
+    speed:1500,
+    loop:true,
+    autoplay:{
+        delay:5000,
+        disableOnInteraction:false,
+    },
+    navigation:{
+        prevEl:"#mainVisual .btnPrev",
+        nextEl:"#mainVisual .btnNext",
+    },
+    on:{
+        slideChange:function(){
+            if(this.realIndex===0){
+                time01.restart();
+            } else if(this.realIndex===1) {
+                time02.restart();
+            } else if(this.realIndex===2) {
+                time03.restart();
+            }
+        }
+    }
+});
+
+// swiper js
 
 Splitting();
 let time01 = gsap.timeline({});
@@ -96,31 +126,69 @@ time03.from("#mainVisual .visual03 .txt .sub .char",{
     }
 });
 
-// Splitting
+// Splitting js ,greensock
 
-let mainVisual = new Swiper("#mainVisual .mask",{
-    effect:"fade",
-    speed:1500,
-    autoplay:{
-        delay:5000,
-        disableOnInteraction:false,
-    },
-    navigation:{
-        prevEl:"#mainVisual .btnPrev",
-        nextEl:"#mainVisual .btnNext",
-    },
-    on:{
-        slideChange:function(){
-            if(this.realIndex===0){
-                time01.restart();
-            } else if(this.realIndex===1) {
-                time02.restart();
-            } else if(this.realIndex===2) {
-                time03.restart();
-            }
-        }
+// #mainVisual
+
+let summaryMotion = gsap.timeline({paused:true});
+summaryMotion.from("#summary .contentsBox:nth-child(1)",{
+    duration:1,
+    opacity:0,
+    x:"-100%",
+    ease:"power4.out"
+})
+.from("#summary .contentsBox:nth-child(2) .contents:nth-child(1) .imgBox",{
+    duration:1,
+    opacity:0,
+    x:"-100%",
+    ease:"power4.out"
+},"-=0.8")
+.from("#summary .contentsBox:nth-child(2) .contents:nth-child(1) .infoBox",{
+    duration:1,
+    opacity:0,
+    x:"-100%",
+    ease:"power4.out"
+},"-=0.8")
+.from("#summary .contentsBox:nth-child(2) .contents:nth-child(2) .infoBox",{
+    duration:1,
+    opacity:0,
+    x:"-100%",
+    ease:"power4.out"
+},"-=0.8")
+.from("#summary .contentsBox:nth-child(2) .contents:nth-child(2) .imgBox",{
+    duration:1,
+    opacity:0,
+    x:"-100%",
+    ease:"power4.out"
+},"-=0.8");
+
+// greensock
+
+// #summary 
+
+let processMotion = gsap.timeline({paused:true,onComplete:function(){
+    let num=0;
+    $("#process .icons li").eq(num).addClass("on");
+    let iconMove = setInterval(function() { 
+        num++;
+        num = num%8;
+        $("#process .icons li").eq(num).addClass("on");
+        $("#process .icons li").eq(num).siblings().removeClass("on");
+    },2000);
+}});
+
+processMotion.from("#process li",{
+    duration:1,
+    opacity:0,
+    x:"-100%",
+    ease:"power4.out",
+    stagger:{
+        each:0.1
     }
 });
+
+// #process
+
 let productDesc = new Swiper("#product .descBox .mask",{
     loop:true,
     effect:"fade",
@@ -156,62 +224,7 @@ let product = new Swiper("#product .productBox .mask",{
       }
 });
 
-// swiper
- 
-let summaryMotion = gsap.timeline({paused:true});
-summaryMotion.from("#summary .contentsBox:nth-child(1)",{
-    duration:1,
-    opacity:0,
-    x:"-100%",
-    ease:"power4.out"
-})
-.from("#summary .contentsBox:nth-child(2) .contents:nth-child(1) .imgBox",{
-    duration:1,
-    opacity:0,
-    x:"-100%",
-    ease:"power4.out"
-},"-=0.8")
-.from("#summary .contentsBox:nth-child(2) .contents:nth-child(1) .infoBox",{
-    duration:1,
-    opacity:0,
-    x:"-100%",
-    ease:"power4.out"
-},"-=0.8")
-.from("#summary .contentsBox:nth-child(2) .contents:nth-child(2) .infoBox",{
-    duration:1,
-    opacity:0,
-    x:"-100%",
-    ease:"power4.out"
-},"-=0.8")
-.from("#summary .contentsBox:nth-child(2) .contents:nth-child(2) .imgBox",{
-    duration:1,
-    opacity:0,
-    x:"-100%",
-    ease:"power4.out"
-},"-=0.8");
-
-let processMotion = gsap.timeline({paused:true,onComplete:function(){
-    console.log("processMotion end");
-    let num=0;
-    $("#process .icons li").eq(num).addClass("on");
-    let iconMove = setInterval(function() { 
-        num++;
-        num = num%8;
-        $("#process .icons li").eq(num).addClass("on");
-        $("#process .icons li").eq(num).siblings().removeClass("on");
-    },2000);
-}});
-processMotion.from("#process li",{
-    duration:1,
-    opacity:0,
-    x:"-100%",
-    ease:"power4.out",
-    stagger:{
-        each:0.1
-    }
-})
-
-// greensock
+// #product 
 
 
 $(window).on("scroll",function(){
@@ -239,11 +252,13 @@ $(window).on("scroll",function(){
             $("#header").removeClass("scroll");
         }
     }
-})
+});
+
+// 스크롤시 이벤트
 
 $(window).on("resize",function() {
     let w = $(window).width()+17;
-    if(w<=1240) {
+    if(w <= 1240) {
         if(!$("body").hasClass("mobile")){
             $("body").addClass("mobile");
         }
@@ -257,7 +272,7 @@ $(window).on("resize",function() {
             $("#gnb .gnbList > li .depth02").removeAttr("style");
         }
     }
-})
+});
 $(window).trigger("resize");
 $(window).trigger("scroll");
 
