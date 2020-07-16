@@ -5,6 +5,35 @@ $("#gnb .gnbList > li").on("mouseleave",function(){
     $("#header").removeClass("on");
 })
 
+$("#gnb .gnbList > li .depth01").on("click",function(){
+    if($("body").hasClass("mobile")){
+        $(this).next(".depth02").stop().slideToggle();
+        $(this).parent().siblings().find(".depth02").stop().slideUp();
+        $(this).toggleClass("on");
+        $(this).parent().siblings().find(".depth01").removeClass("on");
+        return false;
+    }
+});
+
+$(".btnAll").on("click",function(){
+    if(!$("body").hasClass("mobile")){
+        $("#sitemap").fadeIn(250);
+        $("body").addClass("overHidden");
+    } else {
+        $("#gnb").toggleClass("on");
+        $(this).toggleClass("on");
+    }
+    return false;
+});
+
+$("#sitemap .btnClose").on("click",function(){
+    $("#sitemap").fadeOut(250);
+    $("body").removeClass("overHidden");
+    return false;
+});
+
+// header
+
 Splitting();
 let time01 = gsap.timeline({});
 let time02 = gsap.timeline({paused:true});
@@ -67,6 +96,7 @@ time03.from("#mainVisual .visual03 .txt .sub .char",{
     }
 });
 
+// Splitting
 
 let mainVisual = new Swiper("#mainVisual .mask",{
     effect:"fade",
@@ -91,11 +121,6 @@ let mainVisual = new Swiper("#mainVisual .mask",{
         }
     }
 });
-
-
- 
-
-//  product
 let productDesc = new Swiper("#product .descBox .mask",{
     loop:true,
     effect:"fade",
@@ -131,9 +156,8 @@ let product = new Swiper("#product .productBox .mask",{
       }
 });
 
-
-
-// 
+// swiper
+ 
 let summaryMotion = gsap.timeline({paused:true});
 summaryMotion.from("#summary .contentsBox:nth-child(1)",{
     duration:1,
@@ -187,6 +211,7 @@ processMotion.from("#process li",{
     }
 })
 
+// greensock
 
 
 $(window).on("scroll",function(){
@@ -236,30 +261,4 @@ $(window).on("resize",function() {
 $(window).trigger("resize");
 $(window).trigger("scroll");
 
-
-$(".btnAll").on("click",function(){
-    if(!$("body").hasClass("mobile")){
-        $("#sitemap").fadeIn(250);
-        $("body").addClass("overHidden");
-    } else {
-        $("#gnb").toggleClass("on");
-        $(this).toggleClass("on");
-    }
-    return false;
-});
-
-$("#sitemap .btnClose").on("click",function(){
-    $("#sitemap").fadeOut(250);
-    $("body").removeClass("overHidden");
-    return false;
-});
-
-$("#gnb .gnbList > li .depth01").on("click",function(){
-    if($("body").hasClass("mobile")){
-        $(this).next(".depth02").stop().slideToggle();
-        $(this).parent().siblings().find(".depth02").stop().slideUp();
-        $(this).toggleClass("on");
-        $(this).parent().siblings().find(".depth01").removeClass("on");
-        return false;
-    }
-});
+// 사이즈에 변화가 있을때의 이벤트
