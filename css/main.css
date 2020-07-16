@@ -1,3 +1,11 @@
+.green {
+    color:#2bb673;
+}
+.blue {
+    color:#0ba9b5;
+}
+/* mainVisual 첫번째 txt */
+
 #mainVisual .mask {
     overflow: hidden;
 }
@@ -34,7 +42,7 @@
     font-weight: 900;
     text-shadow: 5px 5px 5px rgba(0,0,0,0.1);
 }
-#mainVisual li:nth-child(1) .txt {
+#mainVisual li.visual01 .txt {
     color:#333;
 }
 
@@ -61,8 +69,8 @@
 #mainVisual .btns button:nth-child(1) {    background-color: #2bb673;}
 #mainVisual .btns button:nth-child(2) {    background-color: #0ba9b5;}
 
+/* mainVisual end  */
 
-/*  */
 #summary {
     padding:0 20px;
     max-width: 1700px;
@@ -133,6 +141,7 @@
     background-size: cover;
 }
 
+/* summary */
 
 #process .titleBox {
     text-align: center;
@@ -225,7 +234,8 @@
     color:#2bb673;
 }
 
-/*  */
+/* process end */
+
 #product {
     margin-top: 150px;
     position: relative;
@@ -317,7 +327,8 @@
     z-index: 3;
 }
 
-/*  */
+/* product end */
+
 #online {
     padding: 150px 0 200px;
     margin-top: -150px;
@@ -418,29 +429,6 @@
     color:#fff;
     text-align: center;
 }
-#location .titleBox {
-    text-align: center;
-    font-size: 1.875rem;
-    font-weight: 700;
-    text-align: center;
-    margin: 150px 0 60px;
-}
 
-#location .root_daum_roughmap {
-    width:100% !important;
-}
+/* online end */
 
-.customoverlay {position:relative;bottom:85px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
-.customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
-.customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #d95050 url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
-.customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
-.customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-
-
-
-.green {
-    color:#2bb673;
-}
-.blue {
-    color:#0ba9b5;
-}
