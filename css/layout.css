@@ -24,7 +24,6 @@ a {
 
 
 
-/* skip */
 #skip a {
     display: block;
     text-align: center;
@@ -42,7 +41,8 @@ a {
     left:0;
 }
 
-/* header */
+/* skip */
+
 #header {
     height: 100px;
     position: fixed;
@@ -161,7 +161,7 @@ a {
     border-radius: 0 100px 100px 0;
 }
 #header .util .btnAll {
-    float: left;    height: 100px;    width:100px;    position: relative;
+    float: left;    height: 100px;    width:100px;    position: relative; cursor: pointer;
 }
 #header .util .btnAll span {
     display: block;    width:30px;    height: 2px;    background-color: #999;
@@ -182,9 +182,7 @@ a {
     top:49px; transform: rotate(-45deg);
 }
 
-
-
-
+/* header end */
 
 #footer {
     padding: 100px 0;
@@ -193,7 +191,7 @@ a {
 }
 
 #footer .container {
-    width:1700px;
+    width:1500px;
     margin: auto;
 }
 #footer .container .util li {
@@ -233,6 +231,7 @@ a {
     margin-top: 50px;
 }
 
+/* footer end */
 
 #sitemap {
     position: fixed;
@@ -297,4 +296,5 @@ a {
     transform: rotate(-45deg);
 }
 
+/* sitemap end */
 
