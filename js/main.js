@@ -276,4 +276,4 @@ $(window).on("resize",function() {
 $(window).trigger("resize");
 $(window).trigger("scroll");
 
-// 사이즈에 변화가 있을때의 이벤트
+// 웹화면의 사이즈에 변화가 있을때의 이벤트
